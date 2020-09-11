@@ -11,5 +11,24 @@ Host *
 Host github.com
   User git
 
-Host taz-dn013
-  ProxyCommand ssh root@taz-nn001 -W %h:%p
+Host localhost 
+  HostName 127.0.0.1 
+  Port 8001
+  HostkeyAlgorithms +ssh-dss
+  PubkeyAcceptedKeyTypes +ssh-dss
+
+Host demo-worker-1
+  HostName 10.13.236.12
+  User root
+  ProxyCommand ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 -W %h:%p -q root@217.160.210.14
+
+Host harbinger
+  HostName 192.168.0.5
+  User liebaus
+
+Host gitlab.opencore.com
+   port 2233
+
+Host plexserver
+  HostName 192.168.0.136
+  User pi
